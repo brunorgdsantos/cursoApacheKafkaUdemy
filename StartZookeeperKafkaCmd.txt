@@ -1,0 +1,26 @@
+zookeeper-server-start.bat C:\kafka\config\zookeeper.properties --> Iniciar o Zookeeper
+
+kafka-server-start.bat C:\kafka\config\server.properties --> Iniciar o Kafka
+
+kafka-topics --bootstrap-server localhost:9092 --list --> Verificar se o Zookeeper e Kafka estão funcionado. Se não retornar nada, esta tudo OK. Retorna todos os tópicos criados.
+
+kafka-topics --bootstrap-server localhost:9092 --create --topic teste --> Criar um tópico
+
+kafka-topics --bootstrap-server localhost:9092 --create --topic teste --partitions 10 --> Criar um tópico com 10 partições
+
+kafka-console-producer --broker-list localhost:9092 --topic testeCursoKafka --> Produzindo uma mensagem do tópico
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic testeCursoKafka --> Consumindo mensagens do tópico
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic testeCursoKafka --from-beginning --> Consumindo mensagens do tópico desde o início
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic testeCursoKafka --from-beginning --group grupo1 --> Consumindo mensagens do tópico utilizando grupos
+
+kafka-topics --bootstrap-server localhost:9092 --topic testeCursoKafka --describe --> Retorna informações sobre os tópicos
+
+kafka-topics --bootstrap-server localhost:9092 --alter --topic testeCursoKafka --partitions 10 --> Alterando o numero de partições do tópico anteriormente criado
+
+kafka-console-producer --broker-list localhost:9092 --topic testeCursoKafka --property "parse.key=true" --property "key.separator=," --> Criando um produtor com chave 
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic testeCursoKafka --property "print.key=true" --property "key.separator=," --group grupo1 --> Consumindo por chave 
+
